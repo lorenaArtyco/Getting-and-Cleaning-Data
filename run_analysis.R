@@ -65,3 +65,6 @@ final_3<-fin_label[84:89]
 final<-cbind(final_1, final_2, final_3)
 head(fin_label[89])
 View(final)
+
+rfinal<- reshape(final, timevar="Activity", idvar = "subject" , direction = "wide")
+View(rfinal)
