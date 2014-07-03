@@ -3,7 +3,7 @@ Getting-and-Cleaning-Data
 
 Getting and Cleaning Data
 getwd()
-setwd("C:/Users/lorena/Desktop/Coursera/getdata-projectfiles-UCI HAR Dataset/UCI HAR Dataset")
+
 subject_train<-read.table("./train/subject_train.txt")
 
 
