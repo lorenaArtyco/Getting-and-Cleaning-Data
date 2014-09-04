@@ -1,9 +1,3 @@
-Getting-and-Cleaning-Data
-=========================
-
-Getting and Cleaning Data
-getwd()
-
 subject_train<-read.table("./train/subject_train.txt")
 
 
@@ -51,7 +45,7 @@ View(train)
 
 fin<-rbind(train,test) ##Creamos el conjunto final
 View(fin)
-fin_label=merge(activity_labels, train, by.x="V1", by.y="Y", all=FALSE, sort=FALSE)
+fin_label=merge(activity_labels, fin, by.x="V1", by.y="Y", all=FALSE, sort=FALSE)
 View(fin_label)
 
 ##Renombramos las dos variables que nos quedan
@@ -66,5 +60,17 @@ final<-cbind(final_1, final_2, final_3)
 head(fin_label[89])
 View(final)
 
-rfinal<- reshape(final, timevar="Activity", idvar = "subject" , direction = "wide")
-View(rfinal)
+#rfinal<- reshape(final, timevar="Activity", idvar = "subject" , direction = "wide")
+#View(rfinal2)
+
+
+
+#Para hacer la media de cada variable
+tidydata <-ddply(final,.(subject,Activity),numcolwise(mean))
+View(tidydata)
+
+write.table (tidydata, file = "tidydata.txt", sep = " ") 
+
+#rfinal2<-tapply(final[3:21], final$Activity, mean)
+
+
